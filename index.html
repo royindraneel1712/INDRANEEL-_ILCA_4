@@ -5,254 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indraneel Roy | ILCA-4 Performance Sailor</title>
     <style>
-        /* ILCA-4 Marine Branding */
         :root {
             --navy: #0A192F;
             --ocean: #0077B6;
-            --sail-white: #FFFFFF;
             --ilca-red: #E63946;
-            --bronze-metallic: #CD7F32;
-            --bronze-text: #5D3A1A;
+            --gold: #FFD700;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body { 
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif; 
-            color: var(--navy); 
+            font-family: 'Inter', 'Segoe UI', sans-serif; 
+            color: white; 
             overflow-x: hidden;
-            /* TRANSLUCENT BACKGROUND LOGIC - Uses the 'heavy_wind.jpg' */
-            background: linear-gradient(rgba(240, 244, 248, 0.9), rgba(240, 244, 248, 0.9)), 
-                        url('heavy_wind.jpg') center/cover no-repeat fixed;
+            /* USING DUBAI.JPG AS THE MAIN BACKGROUND */
+            background: url('dubai.jpg') center/cover no-repeat fixed;
+            background-color: var(--navy); 
         }
 
-        /* --- Hero Section --- */
         header { 
-            height: 85vh;
+            height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: transparent; 
-            color: var(--navy);
             padding: 20px;
         }
 
         header h1 { 
-            font-size: clamp(3rem, 8vw, 5rem); 
+            font-size: clamp(3.5rem, 9vw, 6rem); 
             font-weight: 900; 
-            letter-spacing: -2px; 
-            margin-bottom: 10px;
             text-transform: uppercase;
+            text-shadow: 0 5px 30px rgba(0,0,0,0.9);
         }
 
         .tagline { 
-            font-size: 1.4rem; 
-            font-weight: 400; 
-            color: var(--ocean); 
+            font-size: 1.5rem; 
+            color: var(--gold); 
             text-transform: uppercase; 
-            letter-spacing: 4px; 
+            letter-spacing: 5px;
+            text-shadow: 0 2px 15px rgba(0,0,0,1);
         }
 
         .container { max-width: 1200px; margin: auto; padding: 0 20px; }
 
-        /* --- Bio Section (Glass Effect) --- */
-        .bio-section {
-            background: rgba(255, 255, 255, 0.6); 
-            backdrop-filter: blur(8px); 
-            padding: 60px;
-            border-radius: 15px;
-            margin-top: -50px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
-            border-top: 8px solid var(--ilca-red);
+        /* FROSTED GLASS BOXES */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            margin-bottom: 50px;
         }
 
-        .bio-section h2 { font-size: 2.5rem; margin-bottom: 25px; letter-spacing: -1px; }
-        .bio-section p { font-size: 1.2rem; line-height: 1.8; color: #333; margin-bottom: 20px; }
+        .bio-section { margin-top: -100px; border-top: 8px solid var(--ilca-red); }
 
-        /* --- Stats Section --- */
         .stats-wrapper {
-            margin: 80px 0;
-            padding: 80px 40px;
-            background: rgba(10, 25, 47, 0.92); 
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            color: white;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            background: rgba(10, 25, 47, 0.75); 
+            padding: 60px 40px;
         }
 
-        /* The Kine-Graph Growth Watermark */
-        .stats-wrapper::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 300'%3E%3Cpath d='M0,250 L200,220 L400,180 L600,140 L800,80 L1000,20' fill='none' stroke='rgba(230, 57, 70, 0.3)' stroke-width='8'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.5;
-            pointer-events: none;
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .stat-card { background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; text-align: center; }
+        .bronze-card { background: linear-gradient(145deg, #CD7F32, #f3b074); color: #5D3A1A !important; border: none; font-weight: 900; }
 
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; position: relative; z-index: 5; }
-        
-        .stat-card { 
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px; border-radius: 12px; text-align: center; 
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; background: rgba(0,0,0,0.3); border-radius: 10px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { color: #00d4ff; text-transform: uppercase; font-size: 0.8rem; }
 
-        /* FIXED Bronze Card */
-        .bronze-card { 
-            background: linear-gradient(145deg, #CD7F32, #f3b074); 
-            color: var(--bronze-text) !important; 
-            border: none;
-            box-shadow: 0 10px 30px rgba(205, 127, 50, 0.4);
-        }
-        .bronze-card h3, .bronze-card p { color: var(--bronze-text) !important; font-weight: 900; }
-
-        .stat-card h3 { font-size: 3.5rem; margin-bottom: 5px; color: var(--ocean); }
-
-        /* --- Table Styling --- */
-        .table-container { margin-top: 50px; overflow-x: auto; position: relative; z-index: 5; }
-        table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.2); border-radius: 10px; }
-        th { text-align: left; padding: 20px; color: var(--ocean); text-transform: uppercase; font-size: 0.8rem; border-bottom: 2px solid rgba(255,255,255,0.1); }
-        td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        tr:hover { background: rgba(255,255,255,0.05); }
-        .highlight { color: var(--ilca-red); font-weight: bold; }
-
-        /* --- Gallery --- */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px; margin: 80px 0; }
+        /* GALLERY SECTION */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 50px 0; }
         .gallery-item { 
-            height: 300px; position: relative; overflow: hidden; border-radius: 12px; 
-            transition: transform 0.4s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            height: 280px; position: relative; overflow: hidden; border-radius: 15px; 
+            border: 1px solid rgba(255,255,255,0.2); transition: 0.3s;
         }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-        .gallery-item:hover { transform: translateY(-10px); z-index: 10; }
-        .gallery-label { 
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; 
-            background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; 
-            font-size: 0.9rem; font-weight: 600;
-        }
-
-        /* --- Contact (Glass Effect) --- */
-        .contact-box { 
-            text-align: center; padding: 100px 20px; 
-            background: rgba(255, 255, 255, 0.6); 
-            backdrop-filter: blur(8px);
-            border-radius: 20px; margin-bottom: 100px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-label { position: absolute; bottom: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.8); font-size: 0.9rem; font-weight: 600; }
 
         .whatsapp-btn { 
-            display: inline-flex; align-items: center; padding: 20px 50px; 
-            background: #25D366; color: white; text-decoration: none; border-radius: 50px; 
-            font-size: 1.3rem; font-weight: 700; transition: 0.3s;
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+            display: inline-block; padding: 20px 50px; background: #25D366; 
+            color: white; text-decoration: none; border-radius: 50px; font-weight: 800; 
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
         }
-        .whatsapp-btn:hover { transform: scale(1.05); background: #1eb954; }
 
-        footer { background: var(--navy); color: white; padding: 60px 20px; text-align: center; }
-
-        @media (max-width: 768px) {
-            .bio-section { padding: 30px; margin-top: -30px; }
-            header h1 { font-size: 2.5rem; }
-        }
+        footer { text-align: center; padding: 60px; background: rgba(10,25,47,0.9); font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>INDRANEEL ROY</h1>
-    <div class="tagline">The Performance Campaign</div>
+    <div class="tagline">ILCA-4 Performance Campaign</div>
 </header>
 
 <div class="container">
-    <section class="bio-section">
-        <h2>Professional Transition</h2>
-        <p>Success in the ILCA-4 class demands a level of commitment that extends beyond the weekends. My transition from the structured environment of <strong>The Lawrence School, Lovedale</strong> to a dedicated athletic path was a calculated move to secure a position at the top of the Indian fleet.</p>
-        <p>Treating this sport as a profession allows me to focus entirely on performance data and tactical discipline. I am bridging the gap between potential and championship execution, engineered for results.</p>
+    <section class="glass-box bio-section">
+        <h2>Professional Athlete Profile</h2>
+        <p>Transitioning from <strong>The Lawrence School, Lovedale</strong> to full-time competitive sailing, my campaign is built on technical data and tactical rigor. Based out of <strong>INWTC Vizag</strong>, I am focused on the international ILCA-4 circuit.</p>
     </section>
 
-    <div class="stats-wrapper">
+    <div class="glass-box stats-wrapper">
         <div class="stats-grid">
-            <div class="stat-card">
-                <h3>20</h3>
-                <p>Initial Ranking (Mar '25)</p>
-            </div>
-            <div class="stat-card bronze-card">
-                <h3>BRONZE</h3>
-                <p>NE Regatta '26 Podium Finish</p>
-            </div>
-            <div class="stat-card">
-                <h3>7</h3>
-                <p>Peak National Standing</p>
-            </div>
+            <div class="stat-card"><h3>7</h3><p>National Rank (Peak)</p></div>
+            <div class="stat-card bronze-card"><h3>BRONZE</h3><p>NE Regatta 2026</p></div>
+            <div class="stat-card"><h3>14</h3><p>League Teams</p></div>
         </div>
-
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Regatta Location</th>
-                        <th>Position</th>
-                        <th>National Rank</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Mar 2025</td><td>Marve Youth Nationals</td><td>P20</td><td>20</td></tr>
-                    <tr><td>Jun 2025</td><td>Mysuru Multiclass</td><td>P12</td><td>16</td></tr>
-                    <tr><td>Jul 2025</td><td>Hyderabad Sailing Week</td><td>P12</td><td>14</td></tr>
-                    <tr><td>Jul 2025</td><td>Secunderabad Club</td><td>P8</td><td>14</td></tr>
-                    <tr><td>Sep 2025</td><td>Bhopal Multiclass</td><td>P6</td><td>14</td></tr>
-                    <tr><td>Nov 2025</td><td>Asian Trials 1</td><td>P7</td><td>10</td></tr>
-                    <tr><td>Jan 2026</td><td>Asian Trials 2</td><td>P7</td><td>8</td></tr>
-                    <tr><td>Feb 2026</td><td>Asian Trials 3</td><td>P7</td><td>7</td></tr>
-                    <tr class="highlight"><td>Apr 2026</td><td>North East Regatta (Umiam)</td><td>P3 (Bronze)</td><td>Top 5 Trajectory</td></tr>
-                </tbody>
-            </table>
-        </div>
+        <table>
+            <thead><tr><th>Event</th><th>Location</th><th>Result</th></tr></thead>
+            <tbody>
+                <tr><td>North East Regatta 2026</td><td>Umiam</td><td style="color:var(--ilca-red); font-weight:bold;">Podium (P3)</td></tr>
+                <tr><td>Asian Trials 3</td><td>National</td><td>P7</td></tr>
+                <tr><td>Kidzink Pearl Cup</td><td>Dubai</td><td>Finalist</td></tr>
+            </tbody>
+        </table>
     </div>
 
-    <section>
-        <h2 style="text-align: center; margin-bottom: 40px; color: var(--navy);">Gallery: The Campaign Archive</h2>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="skyline_racing.jpg" alt="ILCA-4 Dubai Skyline">
-                <div class="gallery-label">Fleet Racing: Dubai Pearl Cup</div>
-            </div>
-            <div class="gallery-item">
-                <img src="tactical_rounding.jpg" alt="ILCA-4 Leeward Mark">
-                <div class="gallery-label">Tactical Discipline: Mark Rounding</div>
-            </div>
-            <div class="gallery-item">
-                <img src="team_vizag.jpg" alt="INWTC Vizag Sailing Team">
-                <div class="gallery-label">Athlete Grid: INWTC Vizag Squad</div>
-            </div>
-            <div class="gallery-item">
-                <img src="bronze_medal.jpg" alt="National Bronze Medal Umiam">
-                <div class="gallery-label">Podium Presentation: NE Regatta Bronze</div>
-            </div>
+    <section class="gallery">
+        <div class="gallery-item">
+            <img src="fleet.jpg" alt="Fleet Racing">
+            <div class="gallery-label">Fleet Positioning: International Circuit</div>
+        </div>
+        <div class="gallery-item">
+            <img src="malasia.jpg" alt="Training in Malaysia">
+            <div class="gallery-label">High-Performance Training: Malaysia</div>
+        </div>
+        <div class="gallery-item">
+            <img src="medal.png" alt="Bronze Medal Presentation">
+            <div class="gallery-label">NE Regatta 2026 Podium</div>
+        </div>
+        <div class="gallery-item">
+            <img src="Kidzink.jpg" alt="Kidzink Pearl Cup Team">
+            <div class="gallery-label">Team India: Kidzink Pearl Cup Dubai</div>
         </div>
     </section>
 
-    <section class="contact-box">
-        <h2 style="margin-bottom: 20px;">Sponsorship & Inquiries</h2>
-        <p style="margin-bottom: 40px; color: #444;">Seeking high-impact partnerships for the 2026-2027 International Season.</p>
-        <a href="https://wa.me/917032165641" class="whatsapp-btn" target="_blank">
-            Connect via WhatsApp
-        </a>
+    <section class="glass-box" style="text-align: center;">
+        <h2>Sponsorship & Contact</h2>
+        <p style="margin-bottom: 30px;">For professional inquiries and campaign support.</p>
+        <a href="https://wa.me/917032165641" class="whatsapp-btn" target="_blank">Message on WhatsApp</a>
     </section>
 </div>
 
 <footer>
-    <p>INDRANEEL ROY | ILCA-4 SAILOR | INWTC VIZAG</p>
-    <p style="font-size: 0.8rem; margin-top: 10px;">&copy; 2026. All Performance Data Verified.</p>
+    <p>INDRANEEL ROY | ILCA-4 | INWTC VIZAG | &copy; 2026</p>
 </footer>
 
 </body>
